@@ -1,90 +1,168 @@
 ﻿using System;
-
+using System.IO;
+using System.Collections.Generic;
 namespace AlgoritmosDeOrdenacao
 {
+
+    // TODO fazer os algoritmos de ordenação em ordem decrescente
+    // TODO fazer os casos de teste com valores estáticos
+    // TODO criar um documento de output com os valores ordenados
+    // TODO fazer os gráficos
+    // TODO criar um algoritmo de ordenação
     class Program
     {
+        static Random rand = new Random();
+        static int numOfLines = 1000;
         static void Main(string[] args)
         {
-            Random rand = new Random();
-            int[] array = new int[10];
+            // Lê arquivo e mapeia colunas para a lista de objetos
+            List<DataSetEl> dataSetArray = new List<DataSetEl>();
+            readFileContent(ref dataSetArray);
 
+            // Inicia o algoritmo de bubble sort
+            Console.WriteLine("Array sem alteração");
+            printArray(dataSetArray);
+            bubbleSort(dataSetArray);
+            Console.WriteLine("Resultado da ordenação");
+            printArray(dataSetArray);
+
+            // Inicia o algoritmo de quick sort
+            Console.WriteLine("\n\nArray sem alteração");
+            printArray(dataSetArray);
+            quickSort(ref dataSetArray, 0, dataSetArray.Count - 1);
+            Console.WriteLine("Resultado da ordenação");
+            printArray(dataSetArray);
+
+
+            Console.ReadKey();
+        }
+
+        static void readFileContent(ref List<DataSetEl> dataSetArray)
+        {
+            try
+            {  
+
+                int counter = 0;
+                string line;
+                
+                StreamReader file = new StreamReader("dados_airbnb.txt");
+                
+                while ((line = file.ReadLine()) != null && counter < numOfLines)
+                {
+                    if(counter > 0)
+                    {
+                        string[] lineSplited = line.Split("\t");
+                        DataSetEl aux = new DataSetEl();
+                        aux.room_id = long.Parse(lineSplited[0]);
+                        aux.host_id = long.Parse(lineSplited[1]);
+                        aux.room_type = lineSplited[2];
+                        aux.country = lineSplited[3];
+                        aux.city = lineSplited[4];
+                        aux.neighborhood = lineSplited[5];
+                        aux.reviews = lineSplited[6];
+                        aux.overall_satisfaction = lineSplited[7];
+                        aux.accommodates = lineSplited[8];
+                        aux.bedrooms = lineSplited[9];
+                        aux.price = lineSplited[10];
+                        aux.property_type = lineSplited[11];
+
+                        dataSetArray.Add(aux);
+                    }
+                   counter++;
+                }
+                
+            }
+            catch (IOException e)
+            {
+                Console.WriteLine("The file could not be read:");
+                Console.WriteLine(e.Message);
+            }
+        }
+
+        static void generateRandomArray(ref int[] array)
+        {
             for (int i = 0; i < 10; i++)
             {
                 array[i] = rand.Next(0, 10);
             }
-
-            Console.WriteLine("Array sem alteração");
-            printArray(array);
-            //bubbleSort(array);
-            quickSort(ref array, 0, array.Length - 1);
-            Console.WriteLine("Resultado da ordenação");
-            printArray(array);
-            Console.ReadKey();
         }
-        static void printArray(int[] array)
+        static void printArray(List<DataSetEl> el)
         {
-            for (int i = 0; i < array.Length; i++)
+            for (int i = 0; i < el.Count; i++)
             {
-                Console.WriteLine(array[i]);
+                Console.WriteLine(el[i].room_id);
             }
         }
 
         // bubble sort
-        static void bubbleSort(int[] array)
+        static List<DataSetEl> bubbleSort(List<DataSetEl> dataset)
         {
             int i, j;
-            for (i = 0; i < array.Length - 1; i++)
+            for (i = 0; i < dataset.Count - 1; i++)
             {
-                for (j = 0; j < array.Length - i - 1; j++)
+                for (j = 0; j < dataset.Count - i - 1; j++)
                 {
-                    if (array[j] > array[j + 1])
+                    if (dataset[j].room_id > dataset[j + 1].room_id)
                     {
-                        int temp = array[j];
-                        array[j] = array[j + 1];
-                        array[j + 1] = temp;
+                        DataSetEl temp = dataset[j];
+                        dataset[j] = dataset[j + 1];
+                        dataset[j + 1] = temp;
                     }
                 }
             }
 
-            Console.WriteLine("Resultado da ordenação");
-            printArray(array);
+            return dataset;
         }
 
         // quick sort
-        static int partition(int[] array, int minor, int max)
+        static int partition(List<DataSetEl> dataset, int minor, int max)
         {
-            int pivô = array[max];
+            long pivô = dataset[max].room_id;
 
             int i = (minor - 1);
             for (int j = minor; j < max; j++)
             {
-                if (array[j] < pivô)
+                if (dataset[j].room_id < pivô)
                 {
                     i++;
-                    int temp = array[i];
-                    array[i] = array[j];
-                    array[j] = temp;
+                    DataSetEl temp = dataset[i];
+                    dataset[i] = dataset[j];
+                    dataset[j] = temp;
                 }
             }
 
-            int aux = array[i + 1];
-            array[i + 1] = array[max];
-            array[max] = aux;
+            DataSetEl aux = dataset[i + 1];
+            dataset[i + 1] = dataset[max];
+            dataset[max] = aux;
 
             return i + 1;
         }
 
-        static void quickSort(ref int[] array, int minor, int max)
+        static void quickSort(ref List<DataSetEl> dataset, int minor, int max)
         {
             if (minor < max)
             {
-                int pi = partition(array, minor, max);
+                int pi = partition(dataset, minor, max);
 
-                quickSort(ref array, minor, pi - 1);
-                quickSort(ref array, pi + 1, max);
+                quickSort(ref dataset, minor, pi - 1);
+                quickSort(ref dataset, pi + 1, max);
             }
-
         }
+    }
+
+    class DataSetEl
+    {
+        public long room_id { get; set; }
+        public long host_id { get; set; }
+        public String room_type { get; set; }
+        public String country { get; set; }
+        public String city { get; set; }
+        public String neighborhood { get; set; }
+        public String reviews { get; set; }
+        public String overall_satisfaction { get; set; }
+        public String accommodates { get; set; }
+        public String bedrooms { get; set; }
+        public String price { get; set; }
+        public String property_type { get; set; }
     }
 }

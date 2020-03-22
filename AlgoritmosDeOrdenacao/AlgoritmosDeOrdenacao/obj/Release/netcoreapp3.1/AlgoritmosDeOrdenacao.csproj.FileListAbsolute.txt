@@ -1,0 +1,10 @@
+C:\Users\T-Gamer\Documents\git\AlgoritmosDeOrdenacao\AlgoritmosDeOrdenacao\AlgoritmosDeOrdenacao\bin\Release\netcoreapp3.1\AlgoritmosDeOrdenacao.exe
+C:\Users\T-Gamer\Documents\git\AlgoritmosDeOrdenacao\AlgoritmosDeOrdenacao\AlgoritmosDeOrdenacao\bin\Release\netcoreapp3.1\AlgoritmosDeOrdenacao.deps.json
+C:\Users\T-Gamer\Documents\git\AlgoritmosDeOrdenacao\AlgoritmosDeOrdenacao\AlgoritmosDeOrdenacao\bin\Release\netcoreapp3.1\AlgoritmosDeOrdenacao.runtimeconfig.json
+C:\Users\T-Gamer\Documents\git\AlgoritmosDeOrdenacao\AlgoritmosDeOrdenacao\AlgoritmosDeOrdenacao\bin\Release\netcoreapp3.1\AlgoritmosDeOrdenacao.runtimeconfig.dev.json
+C:\Users\T-Gamer\Documents\git\AlgoritmosDeOrdenacao\AlgoritmosDeOrdenacao\AlgoritmosDeOrdenacao\bin\Release\netcoreapp3.1\AlgoritmosDeOrdenacao.dll
+C:\Users\T-Gamer\Documents\git\AlgoritmosDeOrdenacao\AlgoritmosDeOrdenacao\AlgoritmosDeOrdenacao\bin\Release\netcoreapp3.1\AlgoritmosDeOrdenacao.pdb
+C:\Users\T-Gamer\Documents\git\AlgoritmosDeOrdenacao\AlgoritmosDeOrdenacao\AlgoritmosDeOrdenacao\obj\Release\netcoreapp3.1\AlgoritmosDeOrdenacao.AssemblyInfoInputs.cache
+C:\Users\T-Gamer\Documents\git\AlgoritmosDeOrdenacao\AlgoritmosDeOrdenacao\AlgoritmosDeOrdenacao\obj\Release\netcoreapp3.1\AlgoritmosDeOrdenacao.AssemblyInfo.cs
+C:\Users\T-Gamer\Documents\git\AlgoritmosDeOrdenacao\AlgoritmosDeOrdenacao\AlgoritmosDeOrdenacao\obj\Release\netcoreapp3.1\AlgoritmosDeOrdenacao.dll
+C:\Users\T-Gamer\Documents\git\AlgoritmosDeOrdenacao\AlgoritmosDeOrdenacao\AlgoritmosDeOrdenacao\obj\Release\netcoreapp3.1\AlgoritmosDeOrdenacao.pdb
