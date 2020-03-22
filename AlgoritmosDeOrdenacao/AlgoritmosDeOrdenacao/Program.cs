@@ -1,6 +1,8 @@
 ﻿using System;
 using System.IO;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Threading;
 namespace AlgoritmosDeOrdenacao
 {
 
@@ -12,7 +14,7 @@ namespace AlgoritmosDeOrdenacao
     class Program
     {
         static Random rand = new Random();
-        static int numOfLines = 1000;
+        static int numOfLines = 128000;
         static void Main(string[] args)
         {
             // Lê arquivo e mapeia colunas para a lista de objetos
@@ -20,20 +22,28 @@ namespace AlgoritmosDeOrdenacao
             readFileContent(ref dataSetArray);
 
             // Inicia o algoritmo de bubble sort
-            Console.WriteLine("Array sem alteração");
-            printArray(dataSetArray);
-            bubbleSort(dataSetArray);
-            Console.WriteLine("Resultado da ordenação");
-            printArray(dataSetArray);
+            Stopwatch stopWatch = new Stopwatch();
+            Boolean flag = false;
+            DateTime localDate = DateTime.Now;
 
-            // Inicia o algoritmo de quick sort
-            Console.WriteLine("\n\nArray sem alteração");
-            printArray(dataSetArray);
-            quickSort(ref dataSetArray, 0, dataSetArray.Count - 1);
-            Console.WriteLine("Resultado da ordenação");
-            printArray(dataSetArray);
+            if (flag)
+            {
+                stopWatch.Start();
+                bubbleSort(dataSetArray);
+                stopWatch.Stop();
+                printArray(dataSetArray, stopWatch.ElapsedMilliseconds, "BubbleSort - " + numOfLines + " lines" + " - " + localDate.Millisecond);
+                stopWatch.Reset();
+            }
+            else
+            {
+                stopWatch.Start();
+                quickSort(ref dataSetArray, 0, dataSetArray.Count - 1);
+                stopWatch.Stop();
+                TimeSpan ts2 = stopWatch.Elapsed;
+                printArray(dataSetArray, stopWatch.ElapsedMilliseconds, "QuickSort - " + numOfLines + " lines" + " - " + localDate.Millisecond);
+            }
 
-
+            Console.WriteLine("Fim das ordenações, pressione qualquer tecla para encerrar");
             Console.ReadKey();
         }
 
@@ -45,7 +55,7 @@ namespace AlgoritmosDeOrdenacao
                 int counter = 0;
                 string line;
                 
-                StreamReader file = new StreamReader("dados_airbnb.txt");
+                StreamReader file = new StreamReader("dataset_ordered_asc.txt");
                 
                 while ((line = file.ReadLine()) != null && counter < numOfLines)
                 {
@@ -86,12 +96,17 @@ namespace AlgoritmosDeOrdenacao
                 array[i] = rand.Next(0, 10);
             }
         }
-        static void printArray(List<DataSetEl> el)
+        static void printArray(List<DataSetEl> el, long time, String fileName)
         {
-            for (int i = 0; i < el.Count; i++)
+            TextWriter tw = new StreamWriter(fileName + ".txt");
+            int count = 0;
+            tw.WriteLine("Tempo gasto: " + time + " milisegundos para ordenar " + numOfLines + " elementos\n\n");
+            while (count < numOfLines - 1)
             {
-                Console.WriteLine(el[i].room_id);
+                tw.WriteLine(el[count].room_id);
+                count++;
             }
+            tw.Close();
         }
 
         // bubble sort
