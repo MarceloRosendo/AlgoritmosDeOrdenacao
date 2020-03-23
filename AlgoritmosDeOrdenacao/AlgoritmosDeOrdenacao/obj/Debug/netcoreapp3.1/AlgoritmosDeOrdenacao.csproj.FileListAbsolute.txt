@@ -9,3 +9,5 @@ C:\Users\T-Gamer\Documents\git\AlgoritmosDeOrdenacao\AlgoritmosDeOrdenacao\Algor
 C:\Users\T-Gamer\Documents\git\AlgoritmosDeOrdenacao\AlgoritmosDeOrdenacao\AlgoritmosDeOrdenacao\obj\Debug\netcoreapp3.1\AlgoritmosDeOrdenacao.AssemblyInfo.cs
 C:\Users\T-Gamer\Documents\git\AlgoritmosDeOrdenacao\AlgoritmosDeOrdenacao\AlgoritmosDeOrdenacao\obj\Debug\netcoreapp3.1\AlgoritmosDeOrdenacao.dll
 C:\Users\T-Gamer\Documents\git\AlgoritmosDeOrdenacao\AlgoritmosDeOrdenacao\AlgoritmosDeOrdenacao\obj\Debug\netcoreapp3.1\AlgoritmosDeOrdenacao.pdb
+C:\Users\T-Gamer\Documents\git\AlgoritmosDeOrdenacao\AlgoritmosDeOrdenacao\AlgoritmosDeOrdenacao\obj\Debug\netcoreapp3.1\AlgoritmosDeOrdenacao.csproj.CoreCompileInputs.cache
+C:\Users\T-Gamer\Documents\git\AlgoritmosDeOrdenacao\AlgoritmosDeOrdenacao\AlgoritmosDeOrdenacao\obj\Debug\netcoreapp3.1\AlgoritmosDeOrdenacao.genruntimeconfig.cache

@@ -6,11 +6,10 @@ using System.Threading;
 namespace AlgoritmosDeOrdenacao
 {
 
-    // TODO fazer os algoritmos de ordenação em ordem decrescente
-    // TODO fazer os casos de teste com valores estáticos
-    // TODO criar um documento de output com os valores ordenados
+    // TODO fazer os algoritmos de ordenação em ordem decrescente (pronto)
+    // TODO fazer os casos de teste com valores estáticos (pronto)
+    // TODO criar um documento de output com os valores ordenados (pronto)
     // TODO fazer os gráficos
-    // TODO criar um algoritmo de ordenação
     class Program
     {
         static Random rand = new Random();
@@ -23,7 +22,7 @@ namespace AlgoritmosDeOrdenacao
 
             // Inicia o algoritmo de bubble sort
             Stopwatch stopWatch = new Stopwatch();
-            Boolean flag = false;
+            Boolean flag = true;
             DateTime localDate = DateTime.Now;
 
             if (flag)
@@ -44,7 +43,6 @@ namespace AlgoritmosDeOrdenacao
             }
 
             Console.WriteLine("Fim das ordenações, pressione qualquer tecla para encerrar");
-            Console.ReadKey();
         }
 
         static void readFileContent(ref List<DataSetEl> dataSetArray)
@@ -55,7 +53,7 @@ namespace AlgoritmosDeOrdenacao
                 int counter = 0;
                 string line;
                 
-                StreamReader file = new StreamReader("dataset_ordered_asc.txt");
+                StreamReader file = new StreamReader("dataset_ordered_desc.txt");
                 
                 while ((line = file.ReadLine()) != null && counter < numOfLines)
                 {

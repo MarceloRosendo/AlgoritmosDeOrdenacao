@@ -1,0 +1,2 @@
+Nos casos de teste com o arquivo ordenado de maneira ascendente o algoritmo quick sort retornou stack overflow (estouro na pilha de memoria), 
+isso ocorre pois se trata de um algoritmo recursivo em que geram nós a cada troca de posição, ou seja, em todas as posições possiveis (seria o pior caso desse algorimo).
