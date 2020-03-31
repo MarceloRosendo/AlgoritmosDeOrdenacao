@@ -13,7 +13,7 @@ namespace AlgoritmosDeOrdenacao
     class Program
     {
         static Random rand = new Random();
-        static int numOfLines = 128000;
+        static int numOfLines = 2000;
         static void Main(string[] args)
         {
             // Lê arquivo e mapeia colunas para a lista de objetos
@@ -45,6 +45,23 @@ namespace AlgoritmosDeOrdenacao
             Console.WriteLine("Fim das ordenações, pressione qualquer tecla para encerrar");
         }
 
+        static List<DataSetEl> insertionSort(List<DataSetEl> dataset)
+        {
+            int i, j;
+            long aux;
+            for (i = 1; i < dataset.Count; i++)
+            {
+                aux = dataset[i].RoomId;
+                j = i - 1;
+                while (j >= 0 && dataset[j].RoomId > aux)
+                {
+                    dataset[j + 1].RoomId = dataset[j].RoomId;
+                    j--;
+                }
+                dataset[j + 1].RoomId = aux;
+            }
+            return dataset;
+        }
         static void readFileContent(ref List<DataSetEl> dataSetArray)
         {
             try
@@ -61,18 +78,18 @@ namespace AlgoritmosDeOrdenacao
                     {
                         string[] lineSplited = line.Split("\t");
                         DataSetEl aux = new DataSetEl();
-                        aux.room_id = long.Parse(lineSplited[0]);
-                        aux.host_id = long.Parse(lineSplited[1]);
-                        aux.room_type = lineSplited[2];
-                        aux.country = lineSplited[3];
-                        aux.city = lineSplited[4];
-                        aux.neighborhood = lineSplited[5];
-                        aux.reviews = lineSplited[6];
-                        aux.overall_satisfaction = lineSplited[7];
-                        aux.accommodates = lineSplited[8];
-                        aux.bedrooms = lineSplited[9];
-                        aux.price = lineSplited[10];
-                        aux.property_type = lineSplited[11];
+                        aux.RoomId = long.Parse(lineSplited[0]);
+                        aux.HostId = long.Parse(lineSplited[1]);
+                        aux.RoomType = lineSplited[2];
+                        aux.Country = lineSplited[3];
+                        aux.City = lineSplited[4];
+                        aux.Neighborhood = lineSplited[5];
+                        aux.Reviews = lineSplited[6];
+                        aux.OverallSatisfaction = lineSplited[7];
+                        aux.Accommodates = lineSplited[8];
+                        aux.Bedrooms = lineSplited[9];
+                        aux.Price = lineSplited[10];
+                        aux.PropertyType = lineSplited[11];
 
                         dataSetArray.Add(aux);
                     }
@@ -101,7 +118,7 @@ namespace AlgoritmosDeOrdenacao
             tw.WriteLine("Tempo gasto: " + time + " milisegundos para ordenar " + numOfLines + " elementos\n\n");
             while (count < numOfLines - 1)
             {
-                tw.WriteLine(el[count].room_id);
+                tw.WriteLine(el[count].RoomId);
                 count++;
             }
             tw.Close();
@@ -115,7 +132,7 @@ namespace AlgoritmosDeOrdenacao
             {
                 for (j = 0; j < dataset.Count - i - 1; j++)
                 {
-                    if (dataset[j].room_id > dataset[j + 1].room_id)
+                    if (dataset[j].RoomId > dataset[j + 1].RoomId)
                     {
                         DataSetEl temp = dataset[j];
                         dataset[j] = dataset[j + 1];
@@ -130,12 +147,12 @@ namespace AlgoritmosDeOrdenacao
         // quick sort
         static int partition(List<DataSetEl> dataset, int minor, int max)
         {
-            long pivô = dataset[max].room_id;
+            long pivô = dataset[max].RoomId;
 
             int i = (minor - 1);
             for (int j = minor; j < max; j++)
             {
-                if (dataset[j].room_id < pivô)
+                if (dataset[j].RoomId < pivô)
                 {
                     i++;
                     DataSetEl temp = dataset[i];
@@ -165,17 +182,17 @@ namespace AlgoritmosDeOrdenacao
 
     class DataSetEl
     {
-        public long room_id { get; set; }
-        public long host_id { get; set; }
-        public String room_type { get; set; }
-        public String country { get; set; }
-        public String city { get; set; }
-        public String neighborhood { get; set; }
-        public String reviews { get; set; }
-        public String overall_satisfaction { get; set; }
-        public String accommodates { get; set; }
-        public String bedrooms { get; set; }
-        public String price { get; set; }
-        public String property_type { get; set; }
+        public long RoomId { get; set; }
+        public long HostId { get; set; }
+        public String RoomType { get; set; }
+        public String Country { get; set; }
+        public String City { get; set; }
+        public String Neighborhood { get; set; }
+        public String Reviews { get; set; }
+        public String OverallSatisfaction { get; set; }
+        public String Accommodates { get; set; }
+        public String Bedrooms { get; set; }
+        public String Price { get; set; }
+        public String PropertyType { get; set; }
     }
 }
